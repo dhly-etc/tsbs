@@ -40,6 +40,7 @@ var (
 	shardKeySpec         string
 	balancerOn           bool
 	metaFieldIndex       string
+	granularity          string
 )
 
 // Global vars
@@ -85,6 +86,7 @@ func init() {
 	} else {
 		config.HashWorkers = true
 	}
+	granularity = viper.GetString("granularity")
 
 	if !documentPer && timeseriesCollection {
 		log.Fatal("Must set document-per-event=true in order to use timeseries-collection=true")
