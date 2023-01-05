@@ -81,12 +81,13 @@ func init() {
 	shardKeySpec = viper.GetString("shard-key-spec")
 	balancerOn = viper.GetBool("balancer-on")
 	metaFieldIndex = viper.GetString("meta-field-index")
+	granularity = viper.GetString("granularity")
+	
 	if documentPer {
 		config.HashWorkers = false
 	} else {
 		config.HashWorkers = true
 	}
-	granularity = viper.GetString("granularity")
 
 	if !documentPer && timeseriesCollection {
 		log.Fatal("Must set document-per-event=true in order to use timeseries-collection=true")
